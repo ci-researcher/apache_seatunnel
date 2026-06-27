@@ -539,22 +539,6 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- JAXB API removed from JDK 11+ -->
-        <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>2.3.3</version>
-        </dependency>
-        <!-- JAXB runtime -->
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>2.3.9</version>
-            <scope>runtime</scope>
-        </dependency>
-    </dependencies>
-
-    <dependencies>
         <dependency>
             <groupId>com.google.auto.service</groupId>
             <artifactId>auto-service</artifactId>
@@ -672,7 +656,6 @@
                     <configuration>
                         <source>${maven.compiler.source}</source>
                         <target>${maven.compiler.target}</target>
-                        <release>${maven.compiler.release}</release>
                         <forceJavacCompilerUse>true</forceJavacCompilerUse>
                     </configuration>
                 </plugin>
@@ -883,29 +866,6 @@
                     </configuration>
                 </plugin>
             </plugins>
-
-            <!-- Ensure ASM used by shade/surefire/compiler is new enough for JDK 21+ class files -->
-            <pluginManagement>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-shade-plugin</artifactId>
-                        <version>${maven-shade-plugin.version}</version>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.ow2.asm</groupId>
-                                <artifactId>asm</artifactId>
-                                <version>${asm.version}</version>
-            </dependency>
-                            <dependency>
-                                <groupId>org.ow2.asm</groupId>
-                                <artifactId>asm-commons</artifactId>
-                                <version>${asm.version}</version>
-                            </dependency>
-                        </dependencies>
-                    </plugin>
-                </plugins>
-            </pluginManagement>
         </pluginManagement>
 
         <plugins>

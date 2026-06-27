@@ -1,0 +1,65 @@
+@@ -50,9 +50,10 @@
+         <revision>3.0.0-SNAPSHOT</revision>
+         <seatunnel.config.shade.version>2.1.1</seatunnel.config.shade.version>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+-        <java.version>1.8</java.version>
+-        <maven.compiler.source>${java.version}</maven.compiler.source>
+-        <maven.compiler.target>${java.version}</maven.compiler.target>
++        <java.version>8</java.version>
++        <maven.compiler.source>8</maven.compiler.source>
++        <maven.compiler.target>8</maven.compiler.target>
++        <maven.compiler.release>8</maven.compiler.release>
+         <scala.version>2.12.15</scala.version>
+         <scala.binary.version>2.12</scala.binary.version>
+ 
+@@ -60,10 +60,10 @@
+         <log4j2.version>2.17.1</log4j2.version>
+         <log4j2-disruptor.version>3.4.4</log4j2-disruptor.version>
+         <log4j.version>1.2.17</log4j.version>
+-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+-        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+-        <asm.version>7.1</asm.version>
++        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
++        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
++        <maven-shade-plugin.version>3.5.3</maven-shade-plugin.version>
++        <asm.version>9.7</asm.version>
+         <byte-buddy.version>1.14.18</byte-buddy.version>
+     </properties>
+ 
+@@ -226,6 +241,35 @@
+                     <groupId>org.apache.maven.plugins</groupId>
+                     <artifactId>maven-surefire-plugin</artifactId>
+                     <version>${maven-surefire-plugin.version}</version>
++                    <configuration>
++                        <argLine>
++                            --add-opens java.base/java.lang=ALL-UNNAMED
++                            --add-opens java.base/java.lang.reflect=ALL-UNNAMED
++                            --add-opens java.base/java.lang.invoke=ALL-UNNAMED
++                            --add-opens java.base/java.util=ALL-UNNAMED
++                            --add-opens java.base/java.util.concurrent=ALL-UNNAMED
++                            --add-opens java.base/java.util.concurrent.atomic=ALL-UNNAMED
++                            --add-opens java.base/java.io=ALL-UNNAMED
++                            --add-opens java.base/java.nio=ALL-UNNAMED
++                            --add-opens java.base/sun.nio.ch=ALL-UNNAMED
++                            --add-opens java.base/java.net=ALL-UNNAMED
++                            --add-opens java.base/java.text=ALL-UNNAMED
++                            --add-opens java.base/java.math=ALL-UNNAMED
++                            --add-opens java.base/java.time=ALL-UNNAMED
++                            --add-opens java.xml/jdk.xml.internal=ALL-UNNAMED
++                            --add-opens jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED
++                            --add-opens jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED
++                            --add-opens jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED
++                            --add-opens jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED
++                            --add-opens jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED
++                            --add-opens jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED
++                            --add-opens jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED
++                            --add-opens jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED
++                            --add-opens jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED
++                            --add-opens jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED
++                            --add-opens jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED
++                        </argLine>
++                    </configuration>
+                 </plugin>
+                 <plugin>
+                     <groupId>org.apache.maven.plugins</groupId>
